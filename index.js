@@ -42,6 +42,7 @@ class PrettyNumbers {
         for (let m = 0; m < s.length - 1; m++) {
             if (s[m] === s[m + 1]) {
                 pairs++;
+                m++;
             }
         }
 
@@ -49,12 +50,14 @@ class PrettyNumbers {
     }
 }
 
-for (let i = 1; i < 100000; i++) {
+for (let i = 100000; i < 200000; i++) {
     let s = i.toString();
 
     PrettyNumbers.isNumberMirrored(i) ? s += ';1' : s += ';0';
 
     PrettyNumbers.isOneDigitNumber(i) ? s += ';1' : s += ';0';
+
+    s += ';' + PrettyNumbers.getPairsCountInNumber(i).toString();
 
     console.log(s);
 }
